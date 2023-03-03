@@ -1,0 +1,15 @@
+<li>
+    <a href="{{ menu_item.url }}"
+            {% if menu_item.active %}
+       style="font-weight: bold; color: darkred"
+            {% endif %}
+    > {{ request.scheme }}{{ request.get_hostname }}{{ menu_item.url }} </a>
+
+    {% if menu_item.expanded %}
+        <ul>
+        {% for menu_item in menu_item.children %}
+            {% include "menu-item.html" %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+</li>
